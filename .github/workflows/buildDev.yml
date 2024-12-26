@@ -19,7 +19,7 @@ jobs:
     - id: set-version
       run: |
         version=$(python -c 'import sys, json; f=open("./settings.json");print(json.loads(f.read())["releaseVersion"])')
-        echo "::set-output name=version::$version"
+        echo "version=$version" >> $GITHUB_OUTPUT
 
     - name: Set up hub
       run: |
