@@ -55,7 +55,7 @@ if __name__ == "__main__":
                 for step in module["steps"]:
                     logging.info(
                         f"[{package['name']}][{module['repo']}] " +
-                        "Executing step: {step['name']}",
+                        f"Executing step: {step['name']}",
                     )
                     sdcard.execute_step(step)
 
