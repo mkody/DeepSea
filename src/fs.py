@@ -1,4 +1,3 @@
-import os
 import re
 import shutil
 import zipfile
@@ -59,12 +58,12 @@ class FS:
 
     def __extract(self, source):
         path = "./menv/"
-        for filename in os.listdir(path):
-            if re.search(source, filename):
-                asset_path = f"./menv/{filename}"
+        for filename in Path(path).iterdir():
+            if re.search(source, filename.name):
+                asset_path = f"./menv/{filename.name}"
                 with zipfile.ZipFile(asset_path, "r") as zip_ref:
                     zip_ref.extractall(path)
-                self.__delete(filename)
+                self.__delete(filename.name)
 
     def __delete(self, source):
         source_path = Path(f"./menv/{source}")
